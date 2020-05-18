@@ -15,9 +15,15 @@ const { Movie } = db.models;
     const movieInstances = await Promise.all([
       Movie.create({
       title: "Star Wars",
+      runtime: 81,
+      releaseDate: 2001-11-22,
+      isAvailableOnVHS: true
     }),
       Movie.create({
       title: "Lion King",
+      runtime: 90,
+      releaseDate: 1998-12-10,
+      isAvailableOnVHS: true
     })
   ]);
     

@@ -1,29 +1,15 @@
-const Sequelize = require('sequelize');
+const db = require('./db');
+const { Movie } = db.models;
 
-//Instantiate Sequelize
-const sequelize = new Sequelize({
-  dialect: 'sqlite',
-  storage: 'movies.db',
-  // logging: false, this disables logging of SQL statements
-});
-
-
-class Movie extends Sequelize.Model {}
-Movie.init({
-
-  title: Sequelize.STRING
-
-}, { sequelize });
 
 (async () => {
 /* Calling sync({ force: true }) issues a DROP TABLE IF EXISTS statement,
  which completely deletes the table each time the app is run. */
 
-  await sequelize.sync({ force: true });
+  await db.sequelize.sync({ force: true });
 
 
   try {
-    await sequelize.authenticate();
 
     // Instance of the Movie class represents a database row
     const movieInstances = await Promise.all([

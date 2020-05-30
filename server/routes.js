@@ -1,7 +1,11 @@
-const db = require('./db/index')
+const db = require('../db');
 const { Movie } = db.models;
 
+const express = require('express');
 
+const router = express.Router();
+
+router.post('/test1', (req, res) => {
 (async () => {
 /* Calling sync({ force: true }) issues a DROP TABLE IF EXISTS statement,
  which completely deletes the table each time the app is run. */
@@ -14,7 +18,7 @@ const { Movie } = db.models;
     // Instance of the Movie class represents a database row
     const movieInstances = await Promise.all([
       Movie.create({
-      title: "Toy Story",
+      title: req.body.inputValue,
       runtime: 81,
       releaseDate: '2001-11-22',
       isAvailableOnVHS: true
@@ -29,6 +33,7 @@ const { Movie } = db.models;
   .then((movies)=> {
     const moviesJSON = movies.map(movies => movies.toJSON())
     console.log(moviesJSON)
+    res.json(`Succsesfully added ${req.body.inputValue}`)
   });
 
     console.log('Connection successful!')
@@ -45,8 +50,11 @@ const { Movie } = db.models;
       } else {
         throw error;
       }
-
   }
   
 }) ();
+});
 
+
+
+module.exports = router;

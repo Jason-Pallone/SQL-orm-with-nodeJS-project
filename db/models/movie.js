@@ -15,6 +15,7 @@ module.exports = (sequelize) => {
         notNull: {
           msg: 'Please provide a value for "Title"'
         },
+        // The notEmpty validator makes it so that the value cannot be an empty string
         notEmpty: {
           msg: 'Please provide a value for "Title"'
         }
@@ -28,6 +29,7 @@ module.exports = (sequelize) => {
         notNull: {
           msg: 'Please provide a value for "runtime"'
         },
+        // The min validator checks that a number value is greater than or equal to a given number
         min: {
           args: 1,
           msg: 'Please provide a value that is greater than "0" for "runtime"'
@@ -41,6 +43,7 @@ module.exports = (sequelize) => {
         notNull: {
           msg: 'Please provide a value for "releaseDate"'
         },
+        // The isAfter validator checks that a date string holds a date value that is after or equal to a given date.
         isAfter: {
           args: '1895-12-27',
           msg: 'Please provide a date later than or equal to 12-28-1895 for "releaseDate"'

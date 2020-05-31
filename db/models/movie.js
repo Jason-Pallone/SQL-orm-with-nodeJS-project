@@ -55,7 +55,13 @@ module.exports = (sequelize) => {
       allowNull: false, // disallow null
       defaultValue: false // set default value
     },
-  }, ({ sequelize }))
+  }, ({
+     //timestamps: false, --- this will disable the timestamps option
+     //freezeTableName: true, --- this will prevent the pluralization of table names
+     //modelName: 'Movie reviews', --- using modelName you can set the model name to anything you want!
+     //tableName: 'my_movies_table', --- using tableName you can set the table name to anything you want!
+     sequelize 
+    }))
 
   return Movie;
 };

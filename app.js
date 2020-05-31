@@ -30,13 +30,12 @@ const { Op } = db.Sequelize; //Op (Operators) property from Sequelize.
         releaseDate: '1998-12-10',
         isAvailableOnVHS: true
     }),
-    //builds not create, build won't be stored in the DB unless the save() method is called on it.
-      Movie.build({
+      Movie.create({
         title: "Star Wars",
         runtime: 120,
         releaseDate: '2012-12-15',
         isAvailableOnVHS: false
-      }).save(), // Call the save() method to save this movie instance to the DB or it won't be stored. 
+      }),
       Person.create({
         firstName: "Mark",
         lastName: "Jones"
@@ -86,8 +85,13 @@ const { Op } = db.Sequelize; //Op (Operators) property from Sequelize.
 
 
   // DELETE
-  
 
+  const toyStory = await Movie.findByPk(1);
+
+  await toyStory.destroy(); // Deletes movie record 
+
+  const movieList = await Movie.findAll();
+  console.log( movieList.map(movie => movie.toJSON()) ); // Display list of all current movie records
 
   console.log('Connection successful!')
 

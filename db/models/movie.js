@@ -56,10 +56,9 @@ module.exports = (sequelize) => {
       defaultValue: false // set default value
     },
   }, ({
-     //timestamps: false, --- this will disable the timestamps option
-     //freezeTableName: true, --- this will prevent the pluralization of table names
-     //modelName: 'Movie reviews', --- using modelName you can set the model name to anything you want!
-     //tableName: 'my_movies_table', --- using tableName you can set the table name to anything you want!
+     paranoid: true, 
+     /*Setting the paranoid option to true means that a destroyed record will not be physically
+      deleted from the database, but it will also not be returned in future queries.*/
      sequelize 
     }))
 

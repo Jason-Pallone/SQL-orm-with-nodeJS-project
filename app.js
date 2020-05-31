@@ -1,5 +1,6 @@
 const db = require('./db/index')
 const { Movie, Person } = db.models;
+const { Op } = db.Sequelize; //Op (Operators) property from Sequelize.
 
 
 
@@ -11,6 +12,8 @@ const { Movie, Person } = db.models;
 
 
   try {
+
+    // CREATE
 
     // Instance of the Movie class represents a database row
     const movieInstances = await Promise.all([
@@ -33,9 +36,7 @@ const { Movie, Person } = db.models;
         runtime: 120,
         releaseDate: '2012-12-15',
         isAvailableOnVHS: false
-      }).save(), /* Call the save() method to save this movie instance to the DB or it won't be stored. 
-      save() validates the instance, and if the validation passes, it persists it to the database.
-       save() also saves changed fields only -- it will do nothing if no fields changed. */
+      }).save(), // Call the save() method to save this movie instance to the DB or it won't be stored. 
       Person.create({
         firstName: "Mark",
         lastName: "Jones"
@@ -46,15 +47,9 @@ const { Movie, Person } = db.models;
     console.log(moviesJSON)
   });
 
-  //CRUD OPERATIONS
 
-  const movieById = await Movie.findByPk(1); //findByPk() is find by primary key, or the ID for example.
-  console.log(movieById.toJSON());
-
-  const movieByRuntime = await Movie.findOne({ where: { runtime: 90 }});
-  //findOne takes an options object where you specify the attributes to search. In this case we did runtime.
-  console.log(movieByRuntime.toJSON());
-
+  //RETRIEVE
+ 
   const people = await Person.findAll({
     // SELECT * FROM People WHERE firstName = 'Mark' AND lastName = 'Jones';
     where: {
@@ -64,7 +59,38 @@ const { Movie, Person } = db.models;
   });
   console.log( people.map(person => person.toJSON()) );
 
-    console.log('Connection successful!')
+  const movies = await Movie.findAll({
+    attributes: ['id', 'title'], // return only ID and Title of the movie
+    where: {
+        releaseDate: {
+          [Op.gte]: '2000-01-01' // Op.gte means greater than or equal to the date
+        }
+    },
+    order: [['id', 'DESC']] 
+    /*The order value is an array of arrays because you could order by multiple attributes (columns).
+     Each array includes the attribute you want to order by and in which order, 
+     ASCending or DESCending. In this case we're ordering by IDs in DESCending order. */
+  });
+  console.log( movies.map(movie => movie.toJSON()) );
+
+
+  //UPDATE
+
+  const starWars = await Movie.findByPk(3); // Find the movie with a primary key (ID) of 3
+
+  await starWars.update({
+    title: "Clone Wars", // Title update will be ignored due to the fields property
+    runtime: 125
+  }, {fields: ['runtime']}); // Fields property determines what is and is not allowed to be updated
+  console.log(starWars.get({ plain: true })) // starWars.get({ plain: true })) returns the same as .toJSON()
+
+
+  // DELETE
+  
+
+
+  console.log('Connection successful!')
+
   } catch (error) {
       console.error(`Error connecting to the database: ${error}`)
 

@@ -16,12 +16,12 @@ app.use(express.json());
 // Setup a friendly greeting for the root route.
 app.get('/', (req, res) => {
   res.json({
-    message: 'Welcome to the REST API Authentication with Express project!',
+    message: 'Welcome, please create a movie instance!',
   });
 });
 
 // Add routes.
-app.use('/test', routes);
+app.use('/movies', routes);
 
 // Send 404 if no other route matched.
 app.use((req, res) => {

@@ -6,12 +6,27 @@
     <title>Document</title>
 </head>
 <body>
+
   <form action="submit">
-    <input type="text" id="test"></input>
-    <button type="submit" id="btn">submit</button>
+    <input type="text" id="title" placeholder="Movie Title" />
+    <input type="text" id="runtime" placeholder="Runtime" />
+    <input type="text" id="isAvailableOnVhs" placeholder="Is it available on VHS?" />
+    <input type="text" id="release-date" placeholder="Movies release date" />
+    <button type="submit" id="create-btn">Create movie</button>
+    <button id='update-btn'>Update movie</button>
   </form>
+
+  <button id='get-movies'>Get all movies</button>
+
+  <form action="submit">
+    <input type="text" id="movieID" placeholder="ID of movie to delete or update" />
+    <button id="deleteBtn">Delete</button>
+  </form>
+  <div id='movie-list'>
+
+  </div>
     
 </body>
 <script src="../node_modules/axios/dist/axios.min.js"></script>
-<script src="app.js"></script>
+<script src="app.client.js"></script>
 </html>

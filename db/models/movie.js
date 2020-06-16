@@ -56,7 +56,7 @@ module.exports = (sequelize) => {
       defaultValue: false // set default value
     },
   }, ({
-      paranoid: true, 
+     paranoid: true, 
      /*Setting the paranoid option to true means that a destroyed record will not be physically
       deleted from the database, but it will also not be returned in future queries.*/
      sequelize 

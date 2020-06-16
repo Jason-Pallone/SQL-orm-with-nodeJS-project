@@ -1,0 +1,135 @@
+html, body {
+  font-family: 'Nunito', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background-image: linear-gradient(90deg, rgb(61, 145, 255), rgb(0, 102, 255));
+}
+
+/* KEYFRAMES */
+
+@keyframes slideDown {
+    0%, 100% {  transform: translateY(-50px);}
+    10%, 90% { transform: translateY(0px);}
+}
+
+@-webkit-keyframes slideDown {
+  0%, 100% { -webkit-transform: translateY(-50px);}
+  10%, 90% { -webkit-transform: translateY(0px);}
+}
+
+@-moz-keyframes slideDown {
+  0%, 100% { -moz-transform: translateY(-50px);}
+  10%, 90% { -moz-transform: translateY(0px);}
+}
+
+
+#notification {
+  display: none;
+  font-size: 20px;
+  font-weight: bolder;
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgb(255, 255, 255);
+  color: rgb(0, 102, 255);
+  text-align: center;
+  line-height: 2.5;
+  overflow: hidden;
+  -webkit-box-shadow: 0 0 5px black;
+  -mox-box-shadow: 0 0 5px black;
+  box-shadow: 0 0 5px black;
+}
+
+#close {
+  margin: auto;
+  color: #000;
+}
+
+.created-notification-animation {
+   animation: slideDown 1.5s ease forwards;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: #fff;
+  font-weight: bolder;
+}
+
+a:hover {
+  color: rgb(15, 15, 15);
+}
+
+.main-form, .delete-form {
+  display: flex;
+  justify-content: space-around;
+  border-radius: 15px;
+  outline: transparent;
+  color: transparent;
+  margin: auto;
+  font-family: 'Nunito', sans-serif;
+}
+
+
+input {
+  font-family: 'Nunito', sans-serif;
+  border-radius: 3px;
+  outline: transparent;
+  border: transparent;
+  margin: 5% auto auto auto;
+  padding: 2.5% 1.5%;
+  width: 70%;
+  display: flex;
+}
+
+button {
+    font-family: 'Nunito', sans-serif;
+    width: 40%;
+    padding: 1%;
+    border-radius: 5px;
+    font-weight: bolder;
+    font-size: 15px;
+    background: #fff;
+    border: solid 1px #fff;
+    margin: 3% auto auto auto;
+    color: rgb(0, 119, 255) ;
+    letter-spacing: 1px;
+}
+
+#movie-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+#get-movies-btn-div {
+  text-align: center;
+}
+
+section {
+  border: 2px #fff solid;
+  border-radius: 5px;
+  background: #fff;
+  color: rgb(0, 119, 255);
+  margin: 2%;
+  padding: 2%;
+}
+
+@media only screen and (max-width: 500px) {
+
+  .main-form, .delete-form {
+    flex-direction: column;
+  }
+
+  button {
+
+  }
+
+  input {
+    
+  }
+}

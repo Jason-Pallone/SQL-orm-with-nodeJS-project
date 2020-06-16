@@ -3,11 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/main.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
+  <div id="error-div"></div>
 
-  <form action="submit">
+  <div id="notification"> 
+    <a id="close"> Close </a>
+  </div>
+  
+  <nav>
+    <a href="movieList.html">View all movies</a>
+  </nav>
+
+  <form class="main-form" action="submit">
     <input type="text" id="title" placeholder="Movie Title" />
     <input type="text" id="runtime" placeholder="Runtime" />
     <input type="text" id="isAvailableOnVhs" placeholder="Is it available on VHS?" />
@@ -15,18 +26,15 @@
     <button type="submit" id="create-btn">Create movie</button>
     <button id='update-btn'>Update movie</button>
   </form>
+ 
+ 
 
-  <button id='get-movies'>Get all movies</button>
-
-  <form action="submit">
+  <form class="delete-form" action="submit">
     <input type="text" id="movieID" placeholder="ID of movie to delete or update" />
     <button id="deleteBtn">Delete</button>
   </form>
-  <div id='movie-list'>
 
-  </div>
-    
+  <script src="../node_modules/axios/dist/axios.min.js"></script>
+  <script src="main.js"></script>
 </body>
-<script src="../node_modules/axios/dist/axios.min.js"></script>
-<script src="app.client.js"></script>
 </html>

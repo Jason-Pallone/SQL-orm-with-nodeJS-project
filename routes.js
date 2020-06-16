@@ -14,7 +14,7 @@ router.get('/retrieve-movies', async(req, res) => {
 
 router.post('/create', async(req, res) => {
      await Movie.create(req.body)
-      .then(() => res.json("movie created"))
+      .then(() => res.json("Movie Created"))
   });
 
   
@@ -28,6 +28,6 @@ router.post('/delete', async(req, res) => {
 router.put('/update-movie', async(req, res) => {
   const movieToUpdate = await Movie.findByPk(req.body.movieToUpdateID);
   await movieToUpdate.update(req.body)
-    .then(() => res.json('Movie updated!'))
+    .then(() => res.json("Movie updated!"))
 });
 module.exports = router;

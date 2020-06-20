@@ -24,12 +24,14 @@ function generateHTML(res) {
   for (let i = 0; i<movie.length; i++) {
     const sections = document.createElement('section');
     sections.innerHTML = `
-      <p class='id'>${movie[i].id}</p>
-      <p id='title'>Title: ${movie[i].title}</p>
-      <p>Runtime: ${movie[i].runtime}</p>
-      <p>Release date: ${movie[i].releaseDate}</p>
-      <button class="delete-btn">Delete</button>
-      <button class="update-btn">Update</button>
+    <div class='id'>ID: ${movie[i].id}</div>
+    <ul>
+     <li> Title: <p class='title'>${movie[i].title}</p> </li>
+     <li> Runtime: <p class='runtime'>${movie[i].runtime}</p> </li>
+     <li> Release date: <p class='release-date'> ${movie[i].releaseDate}</p> </li>
+    </ul>
+    <button class="delete-btn">Delete</button>
+    <button class="update-btn">Update</button>
     `
   divMovieList.appendChild(sections);
  }

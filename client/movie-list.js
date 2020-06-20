@@ -32,54 +32,58 @@ document.addEventListener('click', async(e) => {
   resetNotification(); // Reset the notification bar to be displayed again
 
   if(e.target && e.target.textContent === 'Delete') {
-   
-    let movieToDeleteID = document.querySelector('.id').innerHTML;
+    //Get the innerHTML and remove anything that isn't a number.
+    let movieToDeleteIDstring = document.querySelector('.id').innerHTML;
+    let movieToDeleteID = movieToDeleteIDstring.replace(/\D/g, "");
 
     await axios.post('http://localhost:5000/movies/delete', {movieToDeleteID})
       .then( response => showNotification(response) )
       .catch( err =>  console.error(err) );
       
     e.target.parentNode.parentNode.removeChild(e.target.parentNode);
-  } 
-  else if(e.target && e.target.textContent === 'Update') {
-    const section = e.target.parentNode;
-    const title = section.firstElementChild;
-    const titleValue = title.innerHTML;
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.value = titleValue;
-    section.insertBefore(input, title);
-    section.removeChild(title)
-  }
+    // Replace all P elements with input elements for this secton
+  } else if(e.target && e.target.textContent === 'Update') {
+      e.target.textContent = 'Save'
+      const section = e.target.parentNode;
+      const paragraphs = section.querySelectorAll('p');
+      for(let i = 0; i<paragraphs.length; i++){
+        const li = section.querySelectorAll('li');
+        const name = paragraphs[i].className;
+        const input = document.createElement('input');
+        input.id = name;
+        input.type = 'text';
+        input.value = paragraphs[i].textContent;
+        li[i].replaceChild(input, paragraphs[i]);
+    }
+  } else if(e.target && e.target.textContent ==='Save'){
+      e.target.textContent = 'Update'
+      const section = e.target.parentNode;
+      const input = section.querySelectorAll('input');
+
+      const updatedMovieIDstring = document.querySelector('.id').innerHTML;
+      const movieToUpdateID = updatedMovieIDstring.replace(/\D/g, "");
+      const title = document.getElementById('title').value;
+      const runtime = document.getElementById('runtime').value;
+      const releaseDate = document.getElementById('release-date').value;
+
+      await axios.put('http://localhost:5000/movies/update-movie', {
+        movieToUpdateID,
+        title,
+        runtime,
+        releaseDate
+      })
+        .then( response => showNotification(response))
+        .catch( err => console.error(err));
+      // Replace all input elements with P elements for this section.
+      for(let i = 0; i<input.length; i++){
+        const li = section.querySelectorAll('li');
+        const name = input[i].id;
+        const paragraphs = document.createElement('p');
+        paragraphs.className = name;
+        paragraphs.textContent = input[i].value;
+        li[i].replaceChild(paragraphs, input[i]);
+      } 
+   }
 });
 
 
-
-/*
-// Update movie
-updateBtn.addEventListener('click', async(e) => {
-  e.preventDefault();
-
-  // Reset the notification bar to be displayed again
-  resetNotification();
-
-  let movieToUpdateID = movieID.value;
-  let title = movieTitle.value;
-  let runtime = movieRuntime.value;
-  let isAvailableOnVhs = movieIsAvailableOnVhs.value;
-  let releaseDate = movieReleaseDate.value;
-
-  await axios.put('http://localhost:5000/movies/update-movie', {
-    movieToUpdateID,
-    title,
-    runtime,
-    isAvailableOnVhs,
-    releaseDate
-  })
-    .then(response => {
-      showNotification(response);
-      clearInputValues();
-    })
-    .catch(err => console.error(err));
-});
-*/

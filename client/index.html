@@ -15,26 +15,20 @@
   </div>
   
   <nav>
-    <a href="movieList.html">View all movies</a>
+    <a href="movie-list.html">View all movies</a>
   </nav>
 
-  <form class="main-form" action="submit">
+  <form class="create-movie-form" action="submit">
     <input type="text" id="title" placeholder="Movie Title" />
     <input type="text" id="runtime" placeholder="Runtime" />
     <input type="text" id="isAvailableOnVhs" placeholder="Is it available on VHS?" />
     <input type="text" id="release-date" placeholder="Movies release date" />
     <button type="submit" id="create-btn">Create movie</button>
-    <button id='update-btn'>Update movie</button>
   </form>
- 
- 
 
-  <form class="delete-form" action="submit">
-    <input type="text" id="movieID" placeholder="ID of movie to delete or update" />
-    <button id="deleteBtn">Delete</button>
-  </form>
 
   <script src="../node_modules/axios/dist/axios.min.js"></script>
+  <script src="functions.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

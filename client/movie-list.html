@@ -18,12 +18,15 @@
   </nav>
 
   <div id="get-movies-btn-div">
-    <button id='get-movies-btn'>Get all movies</button>
+    <button id='get-all-movies-btn'>Get all movies</button>
+    <input type='text' id='movie-title-to-search-input' placeholder="Movie name to search" />
+    <button id="get-movie-by-name-btn">Search</button>
   </div>
 
   <div id='movie-list'></div>
 
   <script src="../node_modules/axios/dist/axios.min.js"></script>
-  <script src="movieList.js"></script>
+  <script src='functions.js'></script>
+  <script src="movie-list.js"></script>
 </body>
 </html>

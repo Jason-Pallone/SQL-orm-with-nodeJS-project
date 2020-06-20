@@ -1,7 +1,7 @@
-const getAllMoviesBtn = document.getElementById('get-all-movies-btn');
-const getMovieByNameBtn = document.getElementById('get-movie-by-name-btn')
-const divMovieList = document.getElementById('movie-list');
-const notification = document.getElementById('notification');
+const getAllMoviesBtn = document.querySelector('#get-all-movies-btn');
+const getMovieByNameBtn = document.querySelector('#get-movie-by-name-btn')
+const divMovieList = document.querySelector('#movie-list');
+const notification = document.querySelector('#notification');
 
 // retrieve all movies
 getAllMoviesBtn.addEventListener('click', async(e) => {
@@ -17,7 +17,7 @@ getAllMoviesBtn.addEventListener('click', async(e) => {
 getMovieByNameBtn.addEventListener('click', async(e) => {
   e.preventDefault();
   
-  const movieTitleToSearchInput = document.getElementById('movie-title-to-search-input');
+  const movieTitleToSearchInput = document.querySelector('#movie-title-to-search-input');
   const movieTitle = movieTitleToSearchInput.value;
 
   await axios.post('http://localhost:5000/movies/search-for-movie', {movieTitle})
@@ -28,15 +28,13 @@ getMovieByNameBtn.addEventListener('click', async(e) => {
 
 /* Delete & update movie, I had to use document.addEventListener because the delete and update buttons are 
    not created until the movies are retrieved */
-   
 document.addEventListener('click', async(e) => {
   e.preventDefault();
   resetNotification(); // Reset the notification bar to be displayed again
 
-  // DELETE MOVIE
+  // ==== DELETE MOVIE ==== check to see if btn textContent = delete
   if(e.target && e.target.textContent === 'Delete') {
     
-   //Get the innerHTML and remove anything that isn't a number.
     const movieToDeleteID = getMovieID(e);
 
     await axios.post('http://localhost:5000/movies/delete', {movieToDeleteID})
@@ -45,15 +43,16 @@ document.addEventListener('click', async(e) => {
     // Removes the section element after data is deleted
     e.target.parentNode.parentNode.removeChild(e.target.parentNode);
     
-    // UPDATE MOVIE
+    //===== UPDATE MOVIE ===== check to see if btn textContent = update
   } else if(e.target && e.target.textContent === 'Update') {
       e.target.textContent = 'Save';
-      // Replace all P elements with input elements for the parent section element.
+      // Replace all P elements with input elements within the parent 'Section' element.
       replaceElements(e, 'p', 'input');
 
   } else if(e.target && e.target.textContent ==='Save'){
       e.target.textContent = 'Update'
 
+      // Movie values to be updated in the database
       const movieToUpdateID = getMovieID(e);
       const title = e.target.parentNode.querySelector('.title').value;
       const runtime = e.target.parentNode.querySelector('.runtime').value;
@@ -69,7 +68,7 @@ document.addEventListener('click', async(e) => {
       })
         .then( response => showNotification(response))
         .catch( err => console.error(err));
-      // Replace all input elements with P elements for the parent section element.
+      // Replace all input elements with P elements within the parent 'Section' element.
       replaceElements(e, 'input', 'p');
    }
 });

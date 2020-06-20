@@ -1,21 +1,16 @@
-// Input elements
+//  Elements
 const movieTitle = document.querySelector('#title');
 const movieRuntime = document.querySelector('#runtime');
 const movieRating = document.querySelector('#rating');
 const movieReview = document.querySelector('#review');
-
-
-// Button elements
-const createMovieBtn = document.getElementById('create-btn');
-
-// Notification & error divs
-const close = document.getElementById('close');
-const notification = document.getElementById('notification');
-const errorDiv = document.getElementById('error-div');
+const createMovieBtn = document.querySelector('#create-btn');
+const closeBtn = document.querySelector('#close');
+const notification = document.querySelector('#notification');
+const errorDiv = document.querySelector('#error-div');
 
 
 // Close notification on click
-close.addEventListener('click', (e) => {;
+closeBtn.addEventListener('click', (e) => {;
   notification.style.display = 'none';
 })
 
@@ -44,5 +39,5 @@ createMovieBtn.addEventListener('click', async(e) => {
     showNotification(response);
     clearInputValues();
   })
-  .catch( err => errorDiv.innerHTML = err);
+  .catch( err => errorDiv.innerHTML = err); // Display error message
 });

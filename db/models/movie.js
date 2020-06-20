@@ -36,24 +36,36 @@ module.exports = (sequelize) => {
         },
       },
     },
-    releaseDate: {
-      type: Sequelize.DATEONLY,
+    rating: {
+      type: Sequelize.INTEGER,
       allowNull: false, // disallow null
       validate: {
         notNull: {
-          msg: 'Please provide a value for "releaseDate"'
+          msg: 'Please provide a value for "Rating"'
         },
-        // The isAfter validator checks that a date string holds a date value that is after or equal to a given date.
-        isAfter: {
-          args: '1895-12-27',
-          msg: 'Please provide a date later than or equal to 12-28-1895 for "releaseDate"'
-        }
-      }
+        // The min validator checks that a number value is greater than or equal to a given number
+        min: {
+          args: 1,
+          msg: 'Please provide a value that is greater than "0" for "Rating"'
+        },
+        max: {
+          args: 10,
+          msg: 'Please provide a value between 1 and 10 for "Rating"'
+        },
+      },
     },
-    isAvailableOnVHS: {
-      type: Sequelize.BOOLEAN,
+    review: {
+      type: Sequelize.STRING,
       allowNull: false, // disallow null
-      defaultValue: false // set default value
+      validate: {
+        notNull: {
+          msg: 'Please provide a value for "Review"'
+        },
+        // The notEmpty validator makes it so that the value cannot be an empty string
+        notEmpty: {
+          msg: 'Please provide a value for "Review"'
+        }
+      },
     },
   }, ({
      paranoid: true, 

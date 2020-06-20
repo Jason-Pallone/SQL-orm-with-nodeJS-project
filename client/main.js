@@ -1,9 +1,9 @@
 // Input elements
-const movieTitle = document.getElementById('title');
-const movieRuntime = document.getElementById('runtime');
-const movieIsAvailableOnVhs = document.getElementById('isAvailableOnVhs');
-const movieReleaseDate = document.getElementById('release-date');
-const movieID = document.getElementById('movieID');
+const movieTitle = document.querySelector('#title');
+const movieRuntime = document.querySelector('#runtime');
+const movieRating = document.querySelector('#rating');
+const movieReview = document.querySelector('#review');
+
 
 // Button elements
 const createMovieBtn = document.getElementById('create-btn');
@@ -29,20 +29,20 @@ createMovieBtn.addEventListener('click', async(e) => {
 
   let title = movieTitle.value;
   let runtime = movieRuntime.value;
-  let isAvailableOnVhs = movieIsAvailableOnVhs.value;
-  let releaseDate = movieReleaseDate.value;
+  let rating = movieRating.value;
+  let review = movieReview.value;
 
   // Extract input values from the form element and send them as a post request
   await axios.post('http://localhost:5000/movies/create', {
     title,
     runtime,
-    isAvailableOnVhs,
-    releaseDate
+    rating,
+    review
   } )
   .then((response) => { 
     // Display movie created notification
     showNotification(response);
     clearInputValues();
   })
-  .catch( err => console.error(err));
+  .catch( err => errorDiv.innerHTML = err);
 });

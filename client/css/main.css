@@ -71,27 +71,50 @@ nav {
   justify-content: center;
 }
 
-a {
+/* H Elements */
+
+h3 {
+  text-align: center;
   color: #fff;
-  font-weight: bolder;
+}
+
+/* ANCHORS */
+
+.anchor-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.anchor-btn {
+  display: block;
+  width: 40%;
+  height: 10%;
+  background:#fff;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px;
+  color: rgb(0, 119, 255);
+  font-weight: bold;
+  line-height: 25px;
+  text-decoration: none;
 }
 
 a:hover {
   color: rgb(15, 15, 15);
 }
 
-/* CREATE MOVIE */
+/* MOVIE INPUTS AND FORMS */
 
 .create-movie-form {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   border-radius: 15px;
   outline: transparent;
   color: transparent;
   margin: auto;
   font-family: 'Nunito', sans-serif;
 }
-
 
 input {
   font-family: 'Nunito', sans-serif;
@@ -104,20 +127,24 @@ input {
   display: flex;
 }
 
+input:focus {
+  border: 2px solid rgb(0, 85, 182);
+}
+
 /* BUTTONS */
 
 button {
-    font-family: 'Nunito', sans-serif;
-    width: 40%;
-    padding: 1%;
-    border-radius: 5px;
-    font-weight: bolder;
-    font-size: 15px;
-    background: #fff;
-    border: solid 1px #fff;
-    margin: 3% auto auto auto;
-    color: rgb(0, 119, 255) ;
-    letter-spacing: 1px;
+  font-family: 'Nunito', sans-serif;
+  width: 43%;
+  padding: 6px;
+  border-radius: 5px;
+  font-weight: bolder;
+  font-size: 15px;
+  background: #fff;
+  border: solid 1px #fff;
+  margin: 6% auto auto auto;
+  color: rgb(0, 119, 255) ;
+  letter-spacing: 1px;
 }
 
 #get-movies-btn-div {

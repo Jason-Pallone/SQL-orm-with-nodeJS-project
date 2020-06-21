@@ -39,7 +39,7 @@ function generateHTML(res) {
  }
 }
 
-// Replace all selected elements, with newly created elements, for the parent section element
+// Replace all selected elements, with newly created elements, within the parent 'Section' element.
 function replaceElements(e, elementToReplace, elementToCreate){
   const section = e.target.parentNode;
   const elementsToReplace = section.querySelectorAll(elementToReplace);
@@ -58,7 +58,7 @@ function replaceElements(e, elementToReplace, elementToCreate){
   }
 }
 
-//Get the innerHTML and remove anything that isn't a number.
+//Get the innerHTML of the movie ID element and remove anything that isn't a number.
 function getMovieID(e) {
   let movieIDstring = e.target.parentNode.querySelector('.id').innerHTML;
   return movieIDstring.replace(/\D/g, "");

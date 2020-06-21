@@ -19,9 +19,7 @@ function errorHandler(error, cb){
 router.post('/create', async(req, res) => {
   await Movie.create(req.body)
    .then(() => res.json("Movie Created"))
-   .catch( err => {  
-     res.json({error: errorHandler(err)}).status(400)
-  }); 
+   .catch( err => console.error(err)); //res.status(400).json(errorHandler(err)) This solution isn't working yet 
 });
 
 router.get('/retrieve-movies', async(req, res) => {

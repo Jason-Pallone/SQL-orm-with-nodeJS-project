@@ -63,3 +63,29 @@ function getMovieID(e) {
   let movieIDstring = e.target.parentNode.querySelector('.id').innerHTML;
   return movieIDstring.replace(/\D/g, "");
 }
+
+
+
+/* I'm using this HTML validation workaround I created, because the express JSON response won't send
+   with the error status response. So for now i'm using this workaround, while I work on fixing the
+   express response issue. */
+function validateHTML() {
+  if(movieTitle.value === '' ) {
+    errorDiv.innerHTML = `<h3 class='error-msg'>Title field cannot be empty</h3>`;
+    return false;
+
+  } else if ( movieRuntime.value === '' || movieRuntime.value < 1 || Number.isInteger(parseInt(movieRuntime.value)) === false) {
+      errorDiv.innerHTML = `<h3 class='error-msg'>Please enter value greater than 0 for runtime</h3>`;
+      return false;
+
+  } else if ( movieRating.value === '' || movieRating.value < 1 || movieRating.value > 10 || Number.isInteger(parseInt(movieRating.value)) === false) {
+      errorDiv.innerHTML = `<h3 class='error-msg'>Please enter a value between 1 and 10 for movie rating</h3>`
+      return false;
+
+  } else if ( movieReview.value === '' ) {
+      errorDiv.innerHTML = `<h3 class='error-msg'>Review field cannot be empty</h3>`
+      return false;
+  } else {
+    return true;
+  }
+}

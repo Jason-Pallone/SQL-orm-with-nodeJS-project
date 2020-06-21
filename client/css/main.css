@@ -198,6 +198,18 @@ ul li p{
   margin-left: 2%;
 }
 
+/* ERROR DIV */
+#error-div {
+  background-color: rgb(243, 86, 86);
+  height: 100%;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.error-msg {
+  color: rgb(29, 29, 29);
+}
+
 @media only screen and (max-width: 500px) {
 
   .main-form, .delete-form {

@@ -8,19 +8,19 @@
     <title>Document</title>
 </head>
 <body>
-  <div id="error-div"></div>
-
   <div id="notification"> 
     <a id="close"> Close </a>
   </div>
 
   <h3>Movie Reviews</h3>
-
+   
+  <div id="error-div"></div>
+  
   <form class="create-movie-form" action="submit">
-    <input type="text" id="title" placeholder="Movie Title" />
-    <input type="text" id="runtime" placeholder="Runtime" />
-    <input type="text" id="rating" placeholder="What's your rating for this movie?" />
-    <input type="text" id="review" placeholder="Write a review for this movie" />
+    <input type="text" id="title" placeholder="Movie Title" data-validate-field="title" />
+    <input type="text" id="runtime" placeholder="Runtime" data-validate-field="runtime" />
+    <input type="text" id="rating" placeholder="What's your rating for this movie?" data-validate-field="rating" />
+    <input type="text" id="review" placeholder="Write a review for this movie" data-validate-field="review" />
     <button type="submit" id="create-btn">Create movie</button>
   </form>
 

@@ -19,20 +19,20 @@
 
   <form autocomplete="on" class="create-movie-form" action="submit">
     <label for="title">Movie Title:</label>
-    <input type="text" name="title" id="title" placeholder="Movie Title" />
+    <input type="text" name="title" alt="Movie title" id="title" placeholder="Movie Title" />
     <label for="runtime">Movie Runtime:</label>
-    <input type="text" name="runtime" id="runtime" placeholder="Runtime" />
+    <input type="text" name="runtime" alt="Movie Runtime" id="runtime" placeholder="Runtime" />
     <label for="rating">Movie Rating (Between 1 and 10):</label>
-    <input type="text" name="rating" id="rating" placeholder="What's your rating for this movie?" />
+    <input type="text" name="rating" alt="Movie Rating" id="rating" placeholder="What's your rating for this movie?" />
     <label for="review">Movie Review:</label>
-    <textarea name="review" id="review" rows="4" cols="50" placeholder="Movie review"></textarea>
+    <textarea name="review" alt="Movie Review" id="review" rows="4" cols="50" placeholder="Movie review"></textarea>
     <button type="submit" id="create-btn">Create movie review</button>
   </form>
 
   <form autocomplete="on" id="get-movies-form" action="submit">
     <label class='search-by-title-label' for="search-for-movie-input">Search by movie title:</label>
     <div class="get-movies-div">
-      <input type='search' name="search-for-movie-input" id='movie-title-to-search-input' placeholder="Search" />
+      <input type='search' name="search-for-movie-input" alt="Search input" id='movie-title-to-search-input' placeholder="Search" />
       <button id="get-movie-by-name-btn">Search</button>
     </div>
   </form>

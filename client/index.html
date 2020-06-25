@@ -3,33 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/2a0c07254d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="./css/main.css"></link>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
   <div id="notification"> 
-    <a id="close"> Close </a>
+    <btn id="close"> Close </btn>
   </div>
 
-  <h3>Movie Reviews</h3>
+  <h1>Reviewer</h1>
    
   <div id="error-div"></div>
-  
-  <form class="create-movie-form" action="submit">
-    <input type="text" id="title" placeholder="Movie Title" data-validate-field="title" />
-    <input type="text" id="runtime" placeholder="Runtime" data-validate-field="runtime" />
-    <input type="text" id="rating" placeholder="What's your rating for this movie?" data-validate-field="rating" />
-    <input type="text" id="review" placeholder="Write a review for this movie" data-validate-field="review" />
-    <button type="submit" id="create-btn">Create movie</button>
+
+  <form autocomplete="on" class="create-movie-form" action="submit">
+    <label for="title">Movie Title:</label>
+    <input type="text" name="title" id="title" placeholder="Movie Title" />
+    <label for="runtime">Movie Runtime:</label>
+    <input type="text" name="runtime" id="runtime" placeholder="Runtime" />
+    <label for="rating">Movie Rating (Between 1 and 10):</label>
+    <input type="text" name="rating" id="rating" placeholder="What's your rating for this movie?" />
+    <label for="review">Movie Review:</label>
+    <textarea name="review" id="review" rows="4" cols="50" placeholder="Movie review"></textarea>
+    <button type="submit" id="create-btn">Create movie review</button>
   </form>
 
-  <div class="anchor-div">
-    <a href="movies.html" class="anchor-btn">View all movies</a>
-  </div>
+  <form autocomplete="on" id="get-movies-form" action="submit">
+    <label class='search-by-title-label' for="search-for-movie-input">Search by movie title:</label>
+    <div class="get-movies-div">
+      <input type='search' name="search-for-movie-input" id='movie-title-to-search-input' placeholder="Search" />
+      <button id="get-movie-by-name-btn">Search</button>
+    </div>
+  </form>
+
+  <button id='display-all-movies-btn'>Display All Listings</button>
+
+  <div id='movie-list'></div>
 
   <script src="../node_modules/axios/dist/axios.min.js"></script>
   <script src="functions.js"></script>
+  <script src="movies.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

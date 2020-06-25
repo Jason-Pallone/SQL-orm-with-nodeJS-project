@@ -22,7 +22,7 @@ createMovieBtn.addEventListener('click', async(e) => {
   resetNotification();
 
   const validMovieCreationHTML = validateHTML();
-  
+
   //Checks to see if HTML is valid to be posted.
   if(validMovieCreationHTML) {
     errorDiv.innerHTML = '';

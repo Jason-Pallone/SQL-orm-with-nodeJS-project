@@ -9,6 +9,7 @@ const notification = document.querySelector('#notification');
 const errorDiv = document.querySelector('#error-div');
 
 
+
 // Close notification on click
 closeBtn.addEventListener('click', (e) => {;
   notification.style.display = 'none';

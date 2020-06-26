@@ -3,12 +3,14 @@
 const cors = require('cors');
 const express = require('express');
 const routes = require('./routes');
+const bodyParser = require('body-parser');
 
 // Create the Express app.
 const app = express();
 
 // Enable All CORS Requests
 app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setup request body JSON parsing.
 app.use(express.json());

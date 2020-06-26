@@ -32,6 +32,7 @@ function generateHTML(res) {
     const sections = document.createElement('section');
     sections.innerHTML = `
     <div class='id'>${movie[i].id}</div>
+    <div id="section-error-div"></div>
     <ul>
      <li> Title: <p class='title'>${movie[i].title}</p> </li>
      <li> Runtime: <p class='runtime'>${movie[i].runtime}</p> minutes</li>
@@ -75,23 +76,33 @@ function getMovieID(e) {
 /* I'm using this HTML validation workaround I created, because the express JSON response won't send
    with the error status response. So for now i'm using this workaround, while I work on fixing the
    express response issue. */
-function validateHTML() {
-  if(movieTitle.value === '' ) {
-    errorDiv.innerHTML = `<h3 class='error-msg'>Title field cannot be empty</h3>`;
+function validateHTML(title, runtime, rating, review, e) {
+
+  let errorMessage = '';
+
+  if(e.target.textContent === 'Save') {
+    errorMessage = e.target.parentNode.parentNode.querySelector('#section-error-div');
+  } else {
+    errorMessage = errorDiv;
+  }
+
+  if(title === '' ) {
+    errorMessage.innerHTML = `<h3 class='error-msg'>Title field cannot be empty</h3>`;
     return false;
 
-  } else if ( movieRuntime.value === '' || movieRuntime.value < 1 || Number.isInteger(parseInt(movieRuntime.value)) === false) {
-      errorDiv.innerHTML = `<h3 class='error-msg'>Please enter value greater than 0 for runtime</h3>`;
+  } else if ( runtime === '' || runtime < 1 || Number.isInteger(parseInt(runtime)) === false) {
+      errorMessage.innerHTML =`<h3 class='error-msg'>Please enter value greater than 0 for runtime</h3>`;
       return false;
 
-  } else if ( movieRating.value === '' || movieRating.value < 1 || movieRating.value > 10 || Number.isInteger(parseInt(movieRating.value)) === false) {
-      errorDiv.innerHTML = `<h3 class='error-msg'>Please enter a value between 1 and 10 for movie rating</h3>`
+  } else if ( rating === '' || rating < 1 || rating > 10 || Number.isInteger(parseInt(rating)) === false) {
+      errorMessage.innerHTML = `<h3 class='error-msg'>Please enter a value between 1 and 10 for movie rating</h3>`;
       return false;
 
-  } else if ( movieReview.value === '' ) {
-      errorDiv.innerHTML = `<h3 class='error-msg'>Review field cannot be empty</h3>`
+  } else if ( review === '' ) {
+      errorMessage.innerHTML = `<h3 class='error-msg'>Review field cannot be empty</h3>`;
       return false;
   } else {
+    errorMessage.innerHTML = ''
     return true;
   }
 }

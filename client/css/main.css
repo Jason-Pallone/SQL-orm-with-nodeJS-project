@@ -1,7 +1,6 @@
 html, body {
   font-family: 'Montserrat', sans-serif;
   scroll-behavior: smooth;
-  overflow: visible;
   overflow-x: hidden;
   background: #fff;
 }
@@ -99,9 +98,14 @@ h1 {
   bottom: 10px;
 }
 
-#error-div {
+#error-div, #section-error-div {
   color: rgb(243, 86, 86);
   text-align: center;
+}
+
+#section-error-div {
+  position: relative;
+  top: 0;
 }
 
 
@@ -234,17 +238,20 @@ button:hover {
   grid-auto-flow: row;
   column-gap: 1fr;
   row-gap: 1fr;
+  margin-bottom: 5%;
+  overflow: hidden;
+  padding: 2%;
 }
 
 section {
   border: 1px rgb(223, 223, 223) solid;
   border-radius: 5px;
+  padding: 2%;
   box-shadow: 0 10px 15px #d6d6d6;
   outline: transparent;
   background: #fff;
   color: rgb(88, 88, 88);
   position: relative;
-  margin-top: 10%;
   animation: 
     sectionSlideDown .5s ease-out,
     fadeIn .5s ease-in;

@@ -51,7 +51,6 @@ document.addEventListener('click', async(e) => {
       replaceElements(e, 'p', 'input');
 
   } else if(e.target && e.target.textContent ==='Save'){
-      e.target.textContent = 'Update'
 
       // Movie values to be updated in the database
       const movieToUpdateID = getMovieID(e);
@@ -60,18 +59,24 @@ document.addEventListener('click', async(e) => {
       const rating = e.target.parentNode.parentNode.querySelector('.rating').value;
       const review = e.target.parentNode.parentNode.querySelector('.review').value;
 
-      await axios.put('http://localhost:5000/movies/update-movie', {
-        movieToUpdateID,
-        title,
-        runtime,
-        rating,
-        review
-      })
-        .then( response => showNotification(response))
-        .catch( err => console.error(err));
-      // Replace all input elements with P elements within the parent 'Section' element.
-      replaceElements(e, 'input', 'p');
-   }
+      const validateUpdatedMovieHTML = validateHTML(title, runtime, rating, review, e);
+
+      if (validateUpdatedMovieHTML) {
+        e.target.textContent = 'Update'
+
+        await axios.put('http://localhost:5000/movies/update-movie', {
+          movieToUpdateID,
+          title,
+          runtime,
+          rating,
+          review
+        })
+         .then( response => showNotification(response))
+         .catch( err => console.error(err));
+        // Replace all input elements with P elements within the parent 'Section' element.
+        replaceElements(e, 'input', 'p');
+     }
+  }
 });
 
 

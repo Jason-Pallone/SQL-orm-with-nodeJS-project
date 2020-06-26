@@ -21,15 +21,15 @@ createMovieBtn.addEventListener('click', async(e) => {
   // Reset the notification bar to be displayed again
   resetNotification();
 
-  const validMovieCreationHTML = validateHTML();
+  let title = movieTitle.value;
+  let runtime = movieRuntime.value;
+  let rating = movieRating.value;
+  let review = movieReview.value;
+
+  const validMovieCreationHTML = validateHTML(title, runtime, rating, review, e);
 
   //Checks to see if HTML is valid to be posted.
   if(validMovieCreationHTML) {
-    errorDiv.innerHTML = '';
-    let title = movieTitle.value;
-    let runtime = movieRuntime.value;
-    let rating = movieRating.value;
-    let review = movieReview.value;
 
     // Extract input values from the form element and send them as a post request
     await axios.post('http://localhost:5000/movies/create', {

@@ -2,18 +2,19 @@ const getAllMoviesBtn = document.querySelector('#display-all-movies-btn');
 const getMovieByNameBtn = document.querySelector('#get-movie-by-name-btn')
 const movieListDiv = document.querySelector('#movie-list');
 
-// retrieve all movies
+// Retrieve all movies
 getAllMoviesBtn.addEventListener('click', async(e) => {
   e.preventDefault();
   clearContainer();
 
-  await axios.get('http://localhost:5000/movies/retrieve-movies')
+  // Use http://localhost:5000 for development
+  await axios.get('https://reviewer-jp.herokuapp.com/movies/retrieve-movies')
     .then( res =>  generateHTML(res) )
     .catch( err => console.log(err) );
 });
 
 
-// retrieve movie by title
+// Retrieve movie by title
 getMovieByNameBtn.addEventListener('click', async(e) => {
   e.preventDefault();
   clearContainer();
@@ -21,7 +22,8 @@ getMovieByNameBtn.addEventListener('click', async(e) => {
   const movieTitleToSearchInput = document.querySelector('#movie-title-to-search-input');
   const movieTitle = movieTitleToSearchInput.value;
 
-  await axios.post('http://localhost:5000/movies/search-for-movie', {movieTitle})
+  // Use http://localhost:5000 for development
+  await axios.post('https://reviewer-jp.herokuapp.com/movies/search-for-movie', {movieTitle})
     .then( res => generateHTML(res) )
     .catch( err => console.error(err) );
 });
@@ -38,7 +40,8 @@ document.addEventListener('click', async(e) => {
   
     const movieToDeleteID = getMovieID(e);
 
-    await axios.post('http://localhost:5000/movies/delete', {movieToDeleteID})
+    // Use http://localhost:5000 for development
+    await axios.post('https://reviewer-jp.herokuapp.com/movies/delete', {movieToDeleteID})
       .then( response => showNotification(response) )
       .catch( err =>  console.error(err) );
     // Removes the section element after data is deleted
@@ -64,7 +67,8 @@ document.addEventListener('click', async(e) => {
       if (validateUpdatedMovieHTML) {
         e.target.textContent = 'Update'
 
-        await axios.put('http://localhost:5000/movies/update-movie', {
+        // Use http://localhost:5000 for development
+        await axios.put('https://reviewer-jp.herokuapp.com/movies/update-movie', {
           movieToUpdateID,
           title,
           runtime,

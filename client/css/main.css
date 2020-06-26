@@ -240,7 +240,7 @@ button:hover {
   row-gap: 1fr;
   margin-bottom: 5%;
   overflow: hidden;
-  padding: 2%;
+  padding: 2% 2% 10% 2%;
 }
 
 section {

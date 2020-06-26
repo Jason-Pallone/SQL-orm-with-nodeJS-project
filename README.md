@@ -1,6 +1,6 @@
 # Reviewer 
 
-![RSVP site gif](./RSVP/public/gif/RSVP-gif.gif)
+![Reviewer gif](./client/public/gif/reviewer-gif.gif)
  
 
 [View the live demo](https://reviewer-jp.herokuapp.com/)

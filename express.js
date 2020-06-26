@@ -13,6 +13,9 @@ app.use(cors());
 // Setup request body JSON parsing.
 app.use(express.json());
 
+/* for heroku deployment */
+app.use(express.static(path.join(__dirname, "client", "build")));
+
 // Setup a friendly greeting for the root route.
 app.get('/', (req, res) => {
   res.json({

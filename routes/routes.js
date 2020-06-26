@@ -1,5 +1,5 @@
-const db = require('./db/index')
-const { Movie, Person } = db.models;
+const db = require('../db/index')
+const { Movie } = db.models;
 const { Op } = db.Sequelize; //Op (Operators) property from Sequelize.
 
 const express = require('express');

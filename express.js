@@ -2,7 +2,7 @@
 
 const cors = require('cors');
 const express = require('express');
-const routes = require('./routes');
+const routes = require('./routes/routes');
 const bodyParser = require('body-parser');
 
 // Create the Express app.

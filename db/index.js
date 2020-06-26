@@ -13,6 +13,5 @@ const db = {
 };
 
 db.models.Movie = require('./models/movie') (sequelize);
-db.models.Person = require('./models/person') (sequelize);
 
 module.exports = db;

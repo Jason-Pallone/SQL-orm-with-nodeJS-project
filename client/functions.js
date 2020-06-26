@@ -89,12 +89,12 @@ function validateHTML(title, runtime, rating, review, e) {
   if(title === '' ) {
     errorMessage.innerHTML = `<h3 class='error-msg'>Title field cannot be empty</h3>`;
     return false;
-
-  } else if ( runtime === '' || runtime < 1 || Number.isInteger(parseInt(runtime)) === false) {
+                                             // Checks to see if the runtime value is a number only
+  } else if ( runtime === '' || runtime < 1 || /^\d+$/.test(runtime) != true) {
       errorMessage.innerHTML =`<h3 class='error-msg'>Please enter value greater than 0 for runtime</h3>`;
       return false;
-
-  } else if ( rating === '' || rating < 1 || rating > 10 || Number.isInteger(parseInt(rating)) === false) {
+                                                        // Checks to see if the rating value is a number only
+  } else if ( rating === '' || rating < 1 || rating > 10 || /^\d+$/.test(rating) != true) {
       errorMessage.innerHTML = `<h3 class='error-msg'>Please enter a value between 1 and 10 for movie rating</h3>`;
       return false;
 

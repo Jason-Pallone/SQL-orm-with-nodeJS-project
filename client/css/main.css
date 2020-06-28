@@ -31,6 +31,18 @@ html, body {
   100%{ transform: translateY(0);}
 }
 
+@keyframes h1-SlideDown {
+  0% { transform: translateY(-20%);}
+  100%{ transform: translateY(0);}
+}
+
+@keyframes h5-SlideDown {
+  0% {opacity: 0;}
+  0% { transform: translateY(-100%)}
+  100%{ transform: translateY(0);}
+  100% {opacity: 1;}
+}
+
 @keyframes fadeIn {
   0% { opacity: 0;}
   100% {opacity: 1;}
@@ -71,16 +83,25 @@ html, body {
 
 /* H Elements */
 
-h1 {
+h1, h5 {
   margin-top: 5%;
   margin-bottom: 0;
   text-align: center;
   letter-spacing: 1.5px;
-  font-size: 40px;
   color: rgb(0, 119, 255); /*rgb(0, 102, 255);*/
   font-weight: bold;
 }
 
+h1 {
+  font-size: 40px;
+  animation: h1-SlideDown 1.2s ease;
+}
+
+h5 {
+  font-size: 12px;
+  padding: 0 3%;
+  animation: h5-SlideDown 1.3s ease;
+}
 
 /* DIVS */
 
@@ -290,6 +311,11 @@ p {
 
 @media only screen and (min-width: 768px) {
 
+  h5 {
+    font-size: 15px;
+    padding: 0 15%;
+  }
+
   #error-div {
     position: relative;
     top: 40px;
@@ -335,6 +361,11 @@ p {
 }
 
 @media only screen and (min-width: 1024px) {
+
+  h5 {
+    font-size: 17px;
+    padding: 0 25%;
+  }
 
   h1 {
     margin: 1% 0 -3% 0;

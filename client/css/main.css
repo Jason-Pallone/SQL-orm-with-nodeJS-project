@@ -81,15 +81,18 @@ html, body {
 }
 
 
-/* H Elements */
+/* Header Elements */
+
+header {
+  text-align: center;
+  letter-spacing: 1.5px;
+  color: rgb(0, 119, 255); 
+  font-weight: bold;
+}
 
 h1, h5 {
   margin-top: 5%;
   margin-bottom: 0;
-  text-align: center;
-  letter-spacing: 1.5px;
-  color: rgb(0, 119, 255); /*rgb(0, 102, 255);*/
-  font-weight: bold;
 }
 
 h1 {
@@ -260,7 +263,7 @@ button:hover {
   row-gap: 1fr;
   margin-bottom: 5%;
   overflow: hidden;
-  padding: 2% 2% 10% 2%;
+  
 }
 
 section {

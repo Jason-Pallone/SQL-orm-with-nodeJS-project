@@ -4,16 +4,8 @@ const movieRuntime = document.querySelector('#runtime');
 const movieRating = document.querySelector('#rating');
 const movieReview = document.querySelector('#review');
 const createMovieBtn = document.querySelector('#create-btn');
-const closeBtn = document.querySelector('#close');
 const notification = document.querySelector('#notification');
 const errorDiv = document.querySelector('#error-div');
-
-
-
-// Close notification on click
-closeBtn.addEventListener('click', (e) => {;
-  notification.style.display = 'none';
-})
 
 
 // Create movie

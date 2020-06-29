@@ -26,25 +26,17 @@ html, body {
   10%, 90% { -moz-transform: translateY(0px);}
 }
 
-@keyframes sectionSlideDown {
-  0% { transform: translateY(-15%);}
-  100%{ transform: translateY(0);}
-}
-
-@keyframes header-SlideDown {
-  0% { transform: translateY(-20%);}
-  100%{ transform: translateY(0);}
-}
-
-@keyframes message-SlideDown {
+@keyframes slideDown {
   0% {opacity: 0;}
-  0% { transform: translateY(-40%)}
+  0% { transform: translateY(-20%)}
   100%{ transform: translateY(0);}
   100% {opacity: 1;}
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0;}
+@keyframes noReviewsMessage {
+  0% {opacity: 0;}
+  0% { transform: translateY(-50%)}
+  100%{ transform: translateY(0);}
   100% {opacity: 1;}
 }
 
@@ -97,19 +89,18 @@ h1, h5 {
 
 h1 {
   font-size: 40px;
-  animation: header-SlideDown 1.2s ease;
 }
 
 h5 {
   font-size: 12px;
   padding: 0 3%;
-  animation: message-SlideDown 1.3s ease;
+  animation: slideDown 1.3s ease;
 }
 
 h4 {
   text-align: center;
   color: rgb(0, 119, 255);
-  animation: message-SlideDown .7s ease;
+  animation: noReviewsMessage .7s ease;
 }
 
 /* DIVS */
@@ -280,9 +271,7 @@ section {
   background: #fff;
   color: rgb(88, 88, 88);
   position: relative;
-  animation: 
-    sectionSlideDown .5s ease-out,
-    fadeIn .5s ease-in;
+  animation: slideDown .5s ease-out;
 }
 
 li {

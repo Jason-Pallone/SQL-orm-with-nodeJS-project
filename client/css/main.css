@@ -31,14 +31,14 @@ html, body {
   100%{ transform: translateY(0);}
 }
 
-@keyframes h1-SlideDown {
+@keyframes header-SlideDown {
   0% { transform: translateY(-20%);}
   100%{ transform: translateY(0);}
 }
 
-@keyframes h5-SlideDown {
+@keyframes message-SlideDown {
   0% {opacity: 0;}
-  0% { transform: translateY(-100%)}
+  0% { transform: translateY(-40%)}
   100%{ transform: translateY(0);}
   100% {opacity: 1;}
 }
@@ -97,13 +97,19 @@ h1, h5 {
 
 h1 {
   font-size: 40px;
-  animation: h1-SlideDown 1.2s ease;
+  animation: header-SlideDown 1.2s ease;
 }
 
 h5 {
   font-size: 12px;
   padding: 0 3%;
-  animation: h5-SlideDown 1.3s ease;
+  animation: message-SlideDown 1.3s ease;
+}
+
+h4 {
+  text-align: center;
+  color: rgb(0, 119, 255);
+  animation: message-SlideDown .7s ease;
 }
 
 /* DIVS */
@@ -262,8 +268,6 @@ button:hover {
   column-gap: 1fr;
   row-gap: 1fr;
   margin-bottom: 5%;
-  overflow: hidden;
-  
 }
 
 section {

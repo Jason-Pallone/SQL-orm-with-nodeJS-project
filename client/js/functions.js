@@ -21,6 +21,7 @@ function showNotification(response) {
 function clearContainer() {
   if (movieListDiv != null) {
     movieListDiv.innerHTML = ''
+    noReviewsMessage.innerHTML = '';
   };
 }
 
@@ -52,12 +53,12 @@ function generateHTML(res) {
 function replaceElements(e, elementToReplace, elementToCreate){
   const section = e.target.parentNode.parentNode;
   const elementsToReplace = section.querySelectorAll(elementToReplace);
-  for(let i = 0; i<elementsToReplace.length; i++){
+  for (let i = 0; i<elementsToReplace.length; i++){
     const li = section.querySelectorAll('li');
     const name = elementsToReplace[i].className;
     const elementsToCreate = document.createElement(elementToCreate);
     elementsToCreate.className = name;
-    if( elementsToCreate.nodeName === 'INPUT' ) {
+    if ( elementsToCreate.nodeName === 'INPUT' ) {
       elementsToCreate.value = elementsToReplace[i].textContent
       elementsToCreate.type = 'text'
     } else {
@@ -80,13 +81,13 @@ function validateHTML(title, runtime, rating, review, e) {
 
   let errorMessage = '';
 
-  if(e.target.textContent === 'Save') {
+  if (e.target.textContent === 'Save') {
     errorMessage = e.target.parentNode.parentNode.querySelector('#section-error-div');
   } else {
     errorMessage = errorDiv;
   }
 
-  if(title === '' ) {
+  if (title === '' ) {
     errorMessage.innerHTML = `<h3 class='error-msg'>Title field cannot be empty</h3>`;
     return false;
                                              // Checks to see if the runtime value is a number only

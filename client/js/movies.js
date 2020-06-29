@@ -1,6 +1,7 @@
 const getAllMoviesBtn = document.querySelector('#display-all-movies-btn');
 const getMovieByNameBtn = document.querySelector('#get-movie-by-name-btn')
 const movieListDiv = document.querySelector('#movie-list');
+const noReviewsMessage = document.querySelector('#no-reviews-message');
 
 // Retrieve all movies
 getAllMoviesBtn.addEventListener('click', async(e) => {
@@ -24,7 +25,12 @@ getMovieByNameBtn.addEventListener('click', async(e) => {
 
   // Use http://localhost:5000 for development
   await axios.post('https://reviewer-jp.herokuapp.com/movies/search-for-movie', {movieTitle})
-    .then( res => generateHTML(res) )
+    .then( res =>{ 
+      if (res.data.length === 0){
+        noReviewsMessage.innerHTML = `<h4>No reviews for this title. Please create one above!</h4>`
+      }
+      generateHTML(res) 
+    })
     .catch( err => console.error(err) );
 });
 

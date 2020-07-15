@@ -173,6 +173,7 @@ input, textarea {
   font-family: 'Montserrat', sans-serif;
   border-radius: 3px;
   border: 1px rgb(173, 173, 173) solid;
+  transition: .4s;
   margin: 0 auto auto auto;
   padding: 2.5% 1.5%;
   width: 70%;
@@ -182,6 +183,12 @@ input:focus, textarea:focus {
   transition: .7s;
   border-color: rgb(0, 119, 255);
   outline: transparent;
+}
+
+/* This class is applied only if an incorrect input value is entered */
+.badInputValue {
+  background-color: rgb(243, 86, 86);
+  transition: .1s;
 }
 
 #movie-title-to-search-input {

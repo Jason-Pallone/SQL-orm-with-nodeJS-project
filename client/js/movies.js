@@ -27,7 +27,7 @@ getMovieByNameBtn.addEventListener('click', async(e) => {
   await axios.post('https://reviewer-jp.herokuapp.com/movies/search-for-movie', {movieTitle})
     .then( res =>{ 
       if (res.data.length === 0){
-        noReviewsMessage.innerHTML = `<h4>No reviews for this title. Please create one above!</h4>`
+        noReviewsMessage.innerHTML = `<h4>There are no reviews for this title. Please create one above!</h4>`
       }
       generateHTML(res) 
     })

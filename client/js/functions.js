@@ -80,10 +80,6 @@ function getMovieID(e) {
 function validateHTML(title, runtime, rating, review, e) {
 
   let errorMessage = '';
-  document.querySelector('#title').classList.remove("badInputValue");
-  document.querySelector('#runtime').classList.remove("badInputValue");
-  document.querySelector('#rating').classList.remove("badInputValue");
-  document.querySelector('#review').classList.remove("badInputValue");
 
   /* Checks to see if it's a section element, if true, it changes to the section error div,
      if false, remains on the form error div. */
@@ -95,22 +91,18 @@ function validateHTML(title, runtime, rating, review, e) {
 
   if (title === '' ) {
     errorMessage.innerHTML = `<h3 class='error-msg'>Title field cannot be empty</h3>`;
-    document.querySelector('#title').classList.add("badInputValue");
     return false;
                                              // Checks to see if the runtime value is a number only
   } else if ( runtime === '' || runtime < 1 || /^\d+$/.test(runtime) != true) {
       errorMessage.innerHTML =`<h3 class='error-msg'>Please enter value greater than 0 for runtime</h3>`;
-      document.querySelector('#runtime').classList.add("badInputValue");
       return false;
                                                         // Checks to see if the rating value is a number only
   } else if ( rating === '' || rating < 1 || rating > 10 || /^\d+$/.test(rating) != true) {
       errorMessage.innerHTML = `<h3 class='error-msg'>Please enter a value between 1 and 10 for movie rating</h3>`;
-      document.querySelector('#rating').classList.add("badInputValue");
       return false;
 
   } else if ( review === '' ) {
       errorMessage.innerHTML = `<h3 class='error-msg'>Review field cannot be empty</h3>`;
-      document.querySelector('#review').classList.add("badInputValue");
       return false;
   } else {
     errorMessage.innerHTML = ''

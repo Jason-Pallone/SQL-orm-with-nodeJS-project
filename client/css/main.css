@@ -185,12 +185,6 @@ input:focus, textarea:focus {
   outline: transparent;
 }
 
-/* This class is applied only if an incorrect input value is entered */
-.badInputValue {
-  background-color: rgb(255, 164, 164);
-  transition: .1s;
-}
-
 #movie-title-to-search-input {
   width: 44%;
 }
